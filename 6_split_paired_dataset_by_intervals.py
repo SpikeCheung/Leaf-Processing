@@ -7,9 +7,9 @@ def safe_mkdir(path):
     os.makedirs(path, exist_ok=True)
 
 
-def split_dataset_no_leakage(src_folder_A, src_folder_B, split_ratio=0.8):
+def split_dataset(src_folder_A, src_folder_B, split_ratio=0.8):
     """
-    One-time sampling → ensures no sample leakage between train / test.
+    One-time sampling.
 
     Parameters:
     src_folder_A: path to A images (incomplete)
@@ -84,8 +84,8 @@ def main():
 
         print(f"Processing: {folder}")
 
-        # One-time fair split → no leakage
-        train_files, test_files = split_dataset_no_leakage(srcA, srcB, split_ratio)
+        # One-time fair split
+        train_files, test_files = split_dataset(srcA, srcB, split_ratio)
 
         copy_files(train_files, srcA, srcB, dst_train_A, dst_train_B)
         copy_files(test_files, srcA, srcB, dst_test_A, dst_test_B)
@@ -93,3 +93,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
