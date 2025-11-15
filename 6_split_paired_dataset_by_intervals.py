@@ -9,7 +9,7 @@ def safe_mkdir(path):
 
 def split_dataset(src_folder_A, src_folder_B, split_ratio=0.8):
     """
-    One-time sampling.
+    One-time propotional random sampling.
 
     Parameters:
     src_folder_A: path to A images (incomplete)
@@ -93,4 +93,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
